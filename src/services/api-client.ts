@@ -1,10 +1,13 @@
 import axios, { CanceledError } from "axios";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
+const API_KEY = import.meta.env.VITE_API_KEY
+
 // Export an instance of axios called apiClient
 export default axios.create({
-  baseURL: "https://api.rawg.io/api",
+  baseURL: BASE_URL,
   params: {
-    key: "24ab5b4f742b4772989c6be1e2175813",
+    key: API_KEY,
   }
 });
 
