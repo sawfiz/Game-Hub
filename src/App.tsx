@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { Button, ButtonGroup, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -14,7 +13,7 @@ function App() {
         }}
       >
         <GridItem area="nav" bg="coral">
-          Nav
+          <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem area="asid" bg="gold">
