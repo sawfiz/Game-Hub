@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
 
+export interface Platform {
+  id: number,
+  slug: string,
+  name: string,
+}
+
 export interface Game {
   id: number;
   name: string;
   background_image: string;
+  // platforms is an array of objects
+  // each object has a property called platform
+  platforms: {platform: Platform}[];
 }
 
 interface FetchGamesResponse {
