@@ -16,6 +16,8 @@ import { MdPhoneIphone } from "react-icons/md";
 import { Platform } from "../hooks/useGame";
 import { Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+import { FaGlobe } from "react-icons/fa";
+
 
 const PlatformIconList = ({
   platforms,
@@ -30,6 +32,7 @@ const PlatformIconList = ({
     "ps-vita": SiPlaystationvita,
     xbox360: SiXbox,
     "xbox-one": TbBrandXbox,
+    "xbox-old": TbBrandXbox,
     "xbox-series-x": TbXboxX,
     pc: SiWindows10,
     macos: FaApple,
@@ -37,10 +40,11 @@ const PlatformIconList = ({
     android: IoLogoAndroid,
     "nintendo-switch": SiNintendoswitch,
     ios: MdPhoneIphone,
+    web: FaGlobe,
   };
 
   return (
-    <>
+    <div>
       {/* {platforms.map(obj => <p key={obj.platform.id}>{obj.platform.slug}</p>)} */}
       {platforms.map((obj) => (
         <Icon
@@ -50,7 +54,7 @@ const PlatformIconList = ({
           color="gray.500"
         />
       ))}
-    </>
+    </div>
   );
 };
 

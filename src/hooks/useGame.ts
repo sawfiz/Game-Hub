@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
 
 export interface Platform {
-  id: number,
-  slug: string,
-  name: string,
+  id: number;
+  slug: string;
+  name: string;
 }
 
 export interface Game {
@@ -13,7 +13,8 @@ export interface Game {
   background_image: string;
   // platforms is an array of objects
   // each object has a property called platform
-  platforms: {platform: Platform}[];
+  platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
 interface FetchGamesResponse {
