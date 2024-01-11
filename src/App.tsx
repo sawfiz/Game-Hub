@@ -3,7 +3,6 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 
 function App() {
-
   return (
     <>
       <Grid
@@ -12,7 +11,7 @@ function App() {
           lg: `"nav nav" "asid main"`,
         }}
       >
-        <GridItem area="nav" bg="coral">
+        <GridItem area="nav">
           <NavBar />
         </GridItem>
         <Show above="lg">
