@@ -12,8 +12,8 @@ const GameCard = ({ game }: { game: Game }) => {
         <Heading fontSize="2xl" marginBottom={2}>
           {game.name}
         </Heading>
-        <HStack justify="space-between">
-          <PlatformIconList platforms={game.platforms} />
+        <HStack justify="space-between" align="start">
+          <PlatformIconList platforms={game.parent_platforms} />
           <MeteCritic metacritic={game.metacritic} />
         </HStack>
       </CardBody>

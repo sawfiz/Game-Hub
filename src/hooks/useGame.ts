@@ -12,7 +12,7 @@ export interface Game {
   background_image: string;
   // platforms is an array of objects
   // each object has a property called platform
-  platforms: { platform: Platform }[];
+  parent_platforms: { platform: Platform }[];
   metacritic: number;
 }
 

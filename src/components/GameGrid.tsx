@@ -6,7 +6,7 @@ import GameCardContainer from "./GameCardContainer.tsx";
 
 const GameGrid = () => {
   const { games, errors, isLoading } = useGame();
-  const array = [1, 2, 3, 4, 5, 6];
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <>
       {errors && <Text>{errors}</Text>}
