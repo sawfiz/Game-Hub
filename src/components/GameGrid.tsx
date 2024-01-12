@@ -3,9 +3,10 @@ import useGame from "../hooks/useGame";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
 import GameCardContainer from "./GameCardContainer.tsx";
+import { Genre } from "../hooks/useGenre.ts";
 
-const GameGrid = () => {
-  const { games, errors, isLoading } = useGame();
+const GameGrid = ({ selectedGenre }: { selectedGenre: Genre | null }) => {
+  const { games, errors, isLoading } = useGame(selectedGenre);
   const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <>
