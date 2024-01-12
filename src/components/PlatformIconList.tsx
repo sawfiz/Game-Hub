@@ -1,22 +1,11 @@
-import React from "react";
-import { SiPlaystation2 } from "react-icons/si";
-import { SiPlaystation3 } from "react-icons/si";
-import { SiPlaystation4 } from "react-icons/si";
-import { SiPlaystation5 } from "react-icons/si";
-import { SiPlaystationvita } from "react-icons/si";
-import { SiXbox } from "react-icons/si";
-import { TbBrandXbox } from "react-icons/tb";
-import { TbXboxX } from "react-icons/tb";
-import { SiWindows10 } from "react-icons/si";
-import { FaApple } from "react-icons/fa";
-import { FaLinux } from "react-icons/fa";
-import { IoLogoAndroid } from "react-icons/io";
-import { SiNintendoswitch } from "react-icons/si";
-import { MdPhoneIphone } from "react-icons/md";
-import { Platform } from "../hooks/useGame";
 import { Icon } from "@chakra-ui/react";
 import { IconType } from "react-icons";
-import { FaGlobe } from "react-icons/fa";
+import { FaApple, FaGlobe, FaLinux } from "react-icons/fa";
+import { IoLogoAndroid } from "react-icons/io";
+import { MdPhoneIphone } from "react-icons/md";
+import { SiNintendoswitch, SiPlaystation2, SiPlaystation3, SiPlaystation4, SiPlaystation5, SiPlaystationvita, SiWindows10, SiXbox } from "react-icons/si";
+import { TbBrandXbox, TbXboxX } from "react-icons/tb";
+import { Platform } from "../hooks/useGame";
 
 
 const PlatformIconList = ({
