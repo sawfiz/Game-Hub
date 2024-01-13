@@ -11,18 +11,23 @@ import {
 import { GoChevronDown } from "react-icons/go";
 import { platformIconList } from "../constants";
 import usePlatform from "../hooks/usePlatform";
+import { Platform } from "../hooks/usePlatform";
 
-const PlatfromSelector = ({
-  selectedPlatform,
-}: {
-  selectedPlatform: (platform: string) => void;
-}) => {
+interface Props {
+  selectedPlatform: Platform | null;
+  onSelectPlatform: (platform: Platform) => void;
+}
+
+const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { platforms, errors } = usePlatform();
 
   const capitalizeFirstLetter = (text: string) => {
     if (text === "pc") return "PC";
     if (text === "ios") return "iOS";
     if (text === "playstateion") return "PlayStation";
+    if (text === "neo-geo") return "Neo Geo";
+    if (text === "commodore-amiga") return "Commodore / Amiga";
+    if (text === "3do") return "3DO";
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
@@ -31,11 +36,14 @@ const PlatfromSelector = ({
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<GoChevronDown />}>
-        Platforms
+        { selectedPlatform?.name || "Platforms"}
       </MenuButton>
       <MenuList>
         {platforms.map((platform) => (
-          <MenuItem key={platform.id}>
+          <MenuItem
+            key={platform.id}
+            onClick={()=>onSelectPlatform(platform)}
+          >
             <HStack align={"center"}>
               <Icon as={platformIconList[platform.slug]}></Icon>
               <Text>{capitalizeFirstLetter(platform.slug)}</Text>

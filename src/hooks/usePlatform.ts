@@ -2,20 +2,19 @@ import useFetchData from "./useFetchData";
 
 interface Platforms {
   games_count: number;
+  name: string,
 }
 
-interface Platform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
   platforms: Platforms[];
 }
 
-const usePlatform = (selectedPlatform?: Platform | null) => {
+const usePlatform = () => {
   const { data, errors, isLoading } = useFetchData<Platform>(
-    "/platforms/lists/parents",
-    { params: { genres: selectedPlatform?.id } },
-    [selectedPlatform?.id]
+    "/platforms/lists/parents"
   );
 
   const platforms = data.sort(

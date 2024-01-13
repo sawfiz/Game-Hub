@@ -1,5 +1,5 @@
 import { Icon } from "@chakra-ui/react";
-import { Platform } from "../hooks/useGame";
+import { Platform } from "../hooks/usePlatform";
 import { platformIconList } from "../constants";
 
 const PlatformIconList = ({
