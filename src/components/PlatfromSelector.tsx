@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Icon,
   Menu,
   MenuButton,
   MenuDivider,
@@ -9,31 +10,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { GoChevronDown } from "react-icons/go";
-import { Icon } from "@chakra-ui/react";
-import { FaApple, FaGlobe, FaLinux } from "react-icons/fa";
-import { IoLogoAndroid } from "react-icons/io";
-import { MdPhoneIphone } from "react-icons/md";
-import {
-  SiNintendoswitch,
-  SiPlaystation,
-  SiWindows10,
-  SiXbox,
-} from "react-icons/si";
-import { IconType } from "react-icons";
+import { platformIconList } from "../constants";
 
 const PlatfromSelector = () => {
-  const iconList: { [key: string]: IconType } = {
-    playstation: SiPlaystation,
-    xbox: SiXbox,
-    pc: SiWindows10,
-    mac: FaApple,
-    linux: FaLinux,
-    android: IoLogoAndroid,
-    nintendo: SiNintendoswitch,
-    ios: MdPhoneIphone,
-    web: FaGlobe,
-  };
-
   const platforms = [
     "pc",
     "mac",
@@ -66,7 +45,7 @@ const PlatfromSelector = () => {
           ) : (
             <MenuItem>
               <HStack align={"center"}>
-                <Icon as={iconList[platform]}></Icon>
+                <Icon as={platformIconList[platform]}></Icon>
                 <Text>{capitalizeFirstLetter(platform)}</Text>
               </HStack>
             </MenuItem>
