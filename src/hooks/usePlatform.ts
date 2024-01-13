@@ -17,12 +17,10 @@ const usePlatform = (selectedPlatform?: Platform | null) => {
     { params: { genres: selectedPlatform?.id } },
     [selectedPlatform?.id]
   );
-  console.log("🚀 ~ usePlatform ~ data:", data);
 
   const platforms = data.sort(
     (a, b) => b.platforms[0].games_count - a.platforms[0].games_count
   );
-  console.log("🚀 ~ usePlatform ~ platforms:", platforms);
 
   return { platforms, errors, isLoading };
 };

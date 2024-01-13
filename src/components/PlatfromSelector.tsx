@@ -4,7 +4,6 @@ import {
   Icon,
   Menu,
   MenuButton,
-  MenuDivider,
   MenuItem,
   MenuList,
   Text,
@@ -12,19 +11,22 @@ import {
 import { GoChevronDown } from "react-icons/go";
 import { platformIconList } from "../constants";
 import usePlatform from "../hooks/usePlatform";
-import { Platform } from "../hooks/useGame";
 
 const PlatfromSelector = ({
   selectedPlatform,
 }: {
   selectedPlatform: (platform: string) => void;
 }) => {
-  const {platforms, errors, isLoading} = usePlatform();
+  const { platforms, errors } = usePlatform();
 
   const capitalizeFirstLetter = (text: string) => {
     if (text === "pc") return "PC";
+    if (text === "ios") return "iOS";
+    if (text === "playstateion") return "PlayStation";
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
+
+  if (errors) return null;
 
   return (
     <Menu>
@@ -32,15 +34,14 @@ const PlatfromSelector = ({
         Platforms
       </MenuButton>
       <MenuList>
-        {platforms.map((platform) =>(
-            <MenuItem key={platform.id}>
-              <HStack align={"center"}>
-                <Icon as={platformIconList[platform.slug]}></Icon>
-                <Text>{capitalizeFirstLetter(platform.slug)}</Text>
-              </HStack>
-            </MenuItem>
-          )
-        )}
+        {platforms.map((platform) => (
+          <MenuItem key={platform.id}>
+            <HStack align={"center"}>
+              <Icon as={platformIconList[platform.slug]}></Icon>
+              <Text>{capitalizeFirstLetter(platform.slug)}</Text>
+            </HStack>
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );
