@@ -3,10 +3,13 @@ import { IconType } from "react-icons";
 import { FaApple, FaGlobe, FaLinux } from "react-icons/fa";
 import { IoLogoAndroid } from "react-icons/io";
 import { MdPhoneIphone } from "react-icons/md";
-import { SiNintendoswitch, SiPlaystation, SiWindows10, SiXbox } from "react-icons/si";
+import {
+  SiNintendoswitch,
+  SiPlaystation,
+  SiWindows10,
+  SiXbox,
+} from "react-icons/si";
 import { Platform } from "../hooks/useGame";
-
-
 
 const PlatformIconList = ({
   platforms,
