@@ -1,4 +1,5 @@
 const getCroppedImgUrl = (url: string) => {
+  if (!url) return null;
   const target = "media/";
 
   // Use split

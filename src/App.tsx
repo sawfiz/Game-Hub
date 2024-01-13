@@ -10,12 +10,13 @@ import { Platform } from "./hooks/usePlatform";
 import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
-  genre: Genre,
-  platform: Platform
+  genre: Genre;
+  platform: Platform;
+  ordering: string | null;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <>
@@ -36,7 +37,7 @@ function App() {
           <GridItem area="asid" paddingX={5}>
             <GenreList
               selectedGenre={gameQuery.genre}
-              onSelectGenre={(genre)=>setGameQuery({...gameQuery, genre})}
+              onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
             />
           </GridItem>
         </Show>
@@ -44,13 +45,16 @@ function App() {
           <HStack paddingX={5} spacing={4} marginBottom={2}>
             <PlatfromSelector
               selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
             />
-            <SortSelector />
+            <SortSelector
+              sortOrder={gameQuery.ordering}
+              onSelectOrder={(ordering) => setGameQuery({ ...gameQuery, ordering })}
+            />
           </HStack>
-          <GameGrid
-            gameQuery={gameQuery}
-          />
+          <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
     </>
