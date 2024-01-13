@@ -7,6 +7,9 @@ import {
   SiPlaystation,
   SiWindows10,
   SiXbox,
+  SiAtari,
+  SiSega,
+  SiCommodore
 } from "react-icons/si";
 
 export const platformIconList: { [key: string]: IconType } = {
@@ -19,4 +22,7 @@ export const platformIconList: { [key: string]: IconType } = {
   nintendo: SiNintendoswitch,
   ios: MdPhoneIphone,
   web: FaGlobe,
+  atari: SiAtari,
+  sega: SiSega,
+  "commodore-amiga": SiCommodore
 };

@@ -9,6 +9,7 @@ import PlatfromSelector from "./components/PlatfromSelector";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<string>('')
 
   return (
     <>
@@ -34,7 +35,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <PlatfromSelector />
+          <PlatfromSelector setSelectedPlatform={setSelectedPlatform} />
           <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
