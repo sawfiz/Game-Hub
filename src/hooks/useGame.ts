@@ -10,6 +10,7 @@ export interface Game {
   // each object has a property called platform
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top: number; 
 }
 
 const useGame = (gameQuery: GameQuery) => {

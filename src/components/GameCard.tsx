@@ -3,6 +3,7 @@ import { Game } from "../hooks/useGame";
 import PlatformIconList from "./PlatformIconList";
 import MeteCritic from "./Rating";
 import getCroppedImgUrl from "../services/image-url.ts";
+import Emoji from "./Emoji.tsx";
 
 const GameCard = ({ game }: { game: Game }) => {
   return (
@@ -16,6 +17,7 @@ const GameCard = ({ game }: { game: Game }) => {
         <Heading fontSize="2xl" marginBottom={1}>
           {game.name}
         </Heading>
+        <Emoji rating={game.rating_top} />
       </CardBody>
     </Card>
   );
