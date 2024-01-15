@@ -32,7 +32,7 @@ function App() {
         }}
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar onSearch={(search)=>setGameQuery({...gameQuery,search })} />
         </GridItem>
         <Show above="md">
           <GridItem area="asid" paddingX={5}>
