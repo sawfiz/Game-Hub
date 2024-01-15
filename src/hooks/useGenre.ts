@@ -9,7 +9,6 @@ export interface Genre {
 }
 
 const useGenre = () => {
-  console.log("🚀 ~ genres:", genres)
   // Pass <Genre> as the generic type for generic data fetching
   // Pass `/genres` as the endpoint for fetching data
   // Rename returned `data` to `genres`

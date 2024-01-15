@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
 import { AxiosRequestConfig } from "axios";
+import { GameQuery } from "../App";
 
 // Define interface FetchResponse to expect an array of generic data type T
 // Add T as the generic type parameter to this interface
@@ -14,7 +15,7 @@ interface FetchResponse<T> {
 const useFetchData = <T>(
   endpoint: string,
   requestConfig?: AxiosRequestConfig,
-  dependencies?: any[]
+  dependencies?: GameQuery[]
 ) => {
   // data is an array of generic data type T
   const [data, setData] = useState<T[]>([]);
