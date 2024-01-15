@@ -9,13 +9,13 @@ const GameCard = ({ game }: { game: Game }) => {
     <Card >
       <Image src={getCroppedImgUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize="2xl" marginBottom={2}>
-          {game.name}
-        </Heading>
-        <HStack justify="space-between" align="start">
+        <HStack justify="space-between" align="start" marginBottom={1}>
           <PlatformIconList platforms={game.parent_platforms} />
           <MeteCritic metacritic={game.metacritic} />
         </HStack>
+        <Heading fontSize="2xl" marginBottom={1}>
+          {game.name}
+        </Heading>
       </CardBody>
     </Card>
   );
