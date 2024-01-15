@@ -1,8 +1,9 @@
-import useFetchData from "./useFetchData";
+// import useFetchData from "./useFetchData";
+import platforms from "../data/platform";
 
 interface Platforms {
   games_count: number;
-  name: string,
+  name: string;
 }
 
 export interface Platform {
@@ -13,15 +14,15 @@ export interface Platform {
 }
 
 const usePlatform = () => {
-  const { data, errors, isLoading } = useFetchData<Platform>(
-    "/platforms/lists/parents"
-  );
+  // const { data, errors, isLoading } = useFetchData<Platform>(
+  //   "/platforms/lists/parents"
+  // );
 
-  const platforms = data.sort(
+  const sorted_platforms = platforms.sort(
     (a, b) => b.platforms[0].games_count - a.platforms[0].games_count
   );
 
-  return { platforms, errors, isLoading };
+  return { sorted_platforms, errors: false, isLoading: false };
 };
 
 export default usePlatform;

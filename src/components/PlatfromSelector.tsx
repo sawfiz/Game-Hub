@@ -19,7 +19,7 @@ interface Props {
 }
 
 const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
-  const { platforms, errors } = usePlatform();
+  const { sorted_platforms, errors } = usePlatform();
 
   const capitalizeFirstLetter = (text: string) => {
     if (text === "pc") return "PC";
@@ -39,7 +39,7 @@ const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
         { selectedPlatform?.name || "Platforms"}
       </MenuButton>
       <MenuList>
-        {platforms.map((platform) => (
+        {sorted_platforms.map((platform) => (
           <MenuItem
             key={platform.id}
             onClick={()=>onSelectPlatform(platform)}
