@@ -1,7 +1,6 @@
-import apiClient from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
-import { FetchResponse } from "../services/api-client";
 import genres from "../data/genres";
+import APIClient from "../services/api-client";
 
 export interface Genre {
   id: number;
@@ -12,17 +11,12 @@ export interface Genre {
 const useGenre = () => {
   // Pass <Genre> as the generic type for generic data fetching
   // Pass `/genres` as the endpoint for fetching data
-  // Rename returned `data` to `genres`
-  // const { data: genres, errors, isLoading } = useFetchData<Genre>("/genres");
 
-  const fetchData = () =>
-    apiClient
-      .get<FetchResponse<Genre>>("/genres")
-      .then((res) => res.data.results);
+  const apiClient = new APIClient<Genre>("/genres")
 
   return useQuery({
     queryKey: ["genres"],
-    queryFn: fetchData,
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
     initialData: genres, // Use static data before fetching
   });

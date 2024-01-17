@@ -1,7 +1,4 @@
-import axios, { CanceledError } from "axios";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL
-const API_KEY = import.meta.env.VITE_API_KEY
+import axios, { AxiosRequestConfig, CanceledError } from "axios";
 
 // Define interface FetchResponse to expect an array of generic data type T
 // Add T as the generic type parameter to this interface
@@ -10,12 +7,29 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
-// Export an instance of axios called apiClient
-export default axios.create({
-  baseURL: BASE_URL,
+// Create an instance of axios 
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
   params: {
-    key: API_KEY,
-  }
+    key: import.meta.env.VITE_API_KEY,
+  },
 });
+
+class APIClient<T> {
+  endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
+
+  // config is optional, used when there is a gameQuery object
+  getAll = (config: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, config)
+      .then((res) => res.data.results);
+  };
+}
+
+export default APIClient;
 
 export { CanceledError };

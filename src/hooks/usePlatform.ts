@@ -1,8 +1,7 @@
 // import useFetchData from "./useFetchData";
-import apiClient from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
-import { FetchResponse } from "../services/api-client";
 import platforms from "../data/platform";
+import APIClient from "../services/api-client";
 
 interface Platforms {
   games_count: number;
@@ -17,14 +16,7 @@ export interface Platform {
 }
 
 const usePlatform = () => {
-  // const { data, errors, isLoading } = useFetchData<Platform>(
-  //   "/platforms/lists/parents"
-  // );
-
-  const fetchData = () =>
-    apiClient
-      .get<FetchResponse<Platform>>("/platforms/list/parents")
-      .then((res) => res.data.results);
+  const apiClient = new APIClient<Platform>("/platforms");
 
   const {
     data: unsortedPlatforms,
@@ -32,7 +24,7 @@ const usePlatform = () => {
     isLoading,
   } = useQuery({
     queryKey: ["platforms"],
-    queryFn: fetchData,
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
     initialData: platforms, // Use static data before fetching
   });
