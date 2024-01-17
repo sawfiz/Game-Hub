@@ -11,6 +11,7 @@ import {
 import { GoChevronDown } from "react-icons/go";
 import { platformIconList } from "../constants";
 import usePlatform from "../hooks/usePlatform";
+import usePlatformName from "../hooks/usePlatformName";
 
 interface Props {
   selectedPlatform?: number;
@@ -19,15 +20,14 @@ interface Props {
 
 const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { data, error } = usePlatform();
-
-  const platform = data?.results.find((p) => p.id === selectedPlatform);
+  const displayName = usePlatformName(selectedPlatform);
 
   if (error) return null;
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<GoChevronDown />}>
-        {platform?.name || "Platforms"}
+        {displayName || "Platforms"}
       </MenuButton>
       <MenuList>
         {data.results.map((platform) => (
