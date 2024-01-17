@@ -30,7 +30,7 @@ const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
         {displayName || "Platforms"}
       </MenuButton>
       <MenuList>
-        {data.results.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             onClick={() => onSelectPlatform(platform.id)}
