@@ -19,7 +19,7 @@ interface Props {
 }
 
 const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
-  const { sorted_platforms, errors } = usePlatform();
+  const { sorted_platforms, error } = usePlatform();
 
   const capitalizeFirstLetter = (text: string) => {
     if (text === "pc") return "PC";
@@ -31,7 +31,7 @@ const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
-  if (errors) return null;
+  if (error) return null;
 
   return (
     <Menu>
