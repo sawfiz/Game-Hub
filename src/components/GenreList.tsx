@@ -12,16 +12,12 @@ import useGenre from "../hooks/useGenre";
 import getCroppedImgUrl from "../services/image-url.ts";
 
 interface Props {
-  selectedGenre: number | undefined;
+  selectedGenre?: number;
   onSelectGenre: (id: number) => void;
 }
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
-  const {
-    data,
-    error,
-    isLoading,
-  } = useGenre();
+  const { data, error, isLoading } = useGenre();
 
   if (error) return null;
 

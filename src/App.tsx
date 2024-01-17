@@ -9,8 +9,8 @@ import PlatfromSelector from "./components/PlatfromSelector";
 import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
-  genreId: number | undefined;
-  platformId: number | undefined;
+  genreId?: number;
+  platformId?: number;
   ordering: string | null;
   search: string | null;
 }

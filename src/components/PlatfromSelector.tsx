@@ -13,7 +13,7 @@ import { platformIconList } from "../constants";
 import usePlatform from "../hooks/usePlatform";
 
 interface Props {
-  selectedPlatform: number | undefined;
+  selectedPlatform?: number;
   onSelectPlatform: (id: number) => void;
 }
 
