@@ -5,7 +5,7 @@ import { GameQuery } from "../App";
 
 // Define interface FetchResponse to expect an array of generic data type T
 // Add T as the generic type parameter to this interface
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }
