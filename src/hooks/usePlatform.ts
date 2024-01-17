@@ -16,24 +16,15 @@ export interface Platform {
 }
 
 const usePlatform = () => {
-  const apiClient = new APIClient<Platform>("/platforms");
+  const apiClient = new APIClient<Platform>("/platforms/list/parents");
 
-  const {
-    data: unsortedPlatforms,
-    error,
-    isLoading,
-  } = useQuery({
+  return useQuery({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
-    initialData: platforms, // Use static data before fetching
+    initialData: {count: 14, results: platforms, next: null}, // Use static data before fetching
   });
 
-  const sorted_platforms = unsortedPlatforms.sort(
-    (a, b) => b.platforms[0].games_count - a.platforms[0].games_count
-  );
-
-  return { sorted_platforms, error, isLoading };
 };
 
 export default usePlatform;

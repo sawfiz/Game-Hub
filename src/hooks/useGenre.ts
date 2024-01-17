@@ -18,7 +18,7 @@ const useGenre = () => {
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
-    initialData: genres, // Use static data before fetching
+    initialData: {count: 19, results: genres, next: null}, // Use static data before fetching
   });
 };
 
