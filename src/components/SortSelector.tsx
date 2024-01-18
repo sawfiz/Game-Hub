@@ -1,33 +1,31 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { GoChevronDown } from "react-icons/go";
+import useGameQueryStore from "../zustand/store";
 
-interface Props {
-  sortOrder: string | null;
-  onSelectOrder: (order: string) => void;
-}
-const SortSelector = ({ sortOrder, onSelectOrder }: Props) => {
+const SortSelector = () => {
+  const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+  const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
+
   const sortOptions: { label: string; value: string }[] = [
     { label: "Name", value: "name" },
     { label: "Released", value: "-released" },
     { label: "Popularity", value: "-metacritic" },
-
   ];
 
   const currentSort = sortOptions.find(
-    (option) => option.value === sortOrder
+    (option) => option.value === selectedSortOrder
   );
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<GoChevronDown />}>
-        Order by:{' '} 
-        {currentSort?.label || "Relevance"}
+        Order by: {currentSort?.label || "Relevance"}
       </MenuButton>
       <MenuList>
         {sortOptions.map((option) => (
           <MenuItem
             key={option.label}
-            onClick={() => onSelectOrder(option.value)}
+            onClick={() => setSortOrder(option.value)}
           >
             {option.label}
           </MenuItem>

@@ -12,15 +12,14 @@ import { GoChevronDown } from "react-icons/go";
 import { platformIconList } from "../constants";
 import usePlatform from "../hooks/usePlatform";
 import usePlatformName from "../hooks/usePlatformName";
+import useGameQueryStore from "../zustand/store";
 
-interface Props {
-  selectedPlatform?: number;
-  onSelectPlatform: (id: number) => void;
-}
+const PlatfromSelector = () => {
+  const selectedPlatformId = useGameQueryStore(s => s.gameQuery.platformId);
+  const setPlatformId = useGameQueryStore(s => s.setPlatformId);
 
-const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { data, error } = usePlatform();
-  const displayName = usePlatformName(selectedPlatform);
+  const displayName = usePlatformName(selectedPlatformId);
 
   if (error) return null;
 
@@ -33,7 +32,7 @@ const PlatfromSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
         {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
-            onClick={() => onSelectPlatform(platform.id)}
+            onClick={() => setPlatformId(platform.id)}
           >
             <HStack align={"center"}>
               <Icon as={platformIconList[platform.slug]}></Icon>
